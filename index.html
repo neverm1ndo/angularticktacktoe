@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html charset="utf-8">
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<style>
+body {
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  padding: 30px;
+  height: 150px;
+  border: 1px dashed #303030;
+  position: absolute;
+  margin: -75px 30px;
+  top: 50%;
+  left: 0px;
+  right: 0px;
+}
+input[type=text] {
+  width: 40px;
+  margin: 5px;
+  padding: 5px;
+}
+select {
+  padding: 5px;
+  width: 70px;
+  margin: 5px;
+}
+</style>
+<body ng-app="myApp" ng-controller="sumController">
+  <h3>AngularJS Simple Calculator</h3>
+<input ng-model="anum" ng-hide="ifsqrt" type="text" placeholder="A" />
+<select ng-model="calc" ng-options="y for (x, y) in operators">
+</select>
+<input ng-model="bnum" type="text" placeholder="B" />
+= {{cnum()}}
+<p>
+  <button ng-click="addvar()">Add variable</button>
+</p>
+<script>
+var app = angular.module('myApp', []);
+app.controller('sumController', function($scope) {
+  $scope.operators = {
+    addition : "+",
+    subtraction : "-",
+    multiplication : "*",
+    division : "/",
+    percent : "%",
+    sqrt : "SQRT"
+};
+  $scope.anum = "0";
+  $scope.bnum = "0";
+  $scope.cnum = function() {
+      if ($scope.calc == $scope.operators.addition) {
+         $scope.ifsqrt = false;
+         return parseInt($scope.anum) + parseInt($scope.bnum);
+       }
+       if ($scope.calc == $scope.operators.subtraction) {
+          $scope.ifsqrt = false;
+          return parseInt($scope.anum) - parseInt($scope.bnum);
+        }
+        if ($scope.calc == $scope.operators.multiplication) {
+           $scope.ifsqrt = false;
+           return parseInt($scope.anum) * parseInt($scope.bnum);
+         }
+         if ($scope.calc == $scope.operators.division) {
+            $scope.ifsqrt = false;
+            return parseInt($scope.anum) / parseInt($scope.bnum);
+          }
+          if ($scope.calc == $scope.operators.percent) {
+             $scope.ifsqrt = false;
+             return parseInt($scope.bnum) / 100 * parseInt($scope.anum);
+           }
+           if ($scope.calc == $scope.operators.sqrt) {
+             $scope.ifsqrt = true;
+              return Math.sqrt(parseInt($scope.bnum));
+            }
+          else {
+            return "Choose any operator!";
+          };
+     };
+});
+</script>
+</body>
+</html>
