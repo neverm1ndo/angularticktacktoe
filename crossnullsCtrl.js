@@ -2,25 +2,11 @@
   'use strict';
   angular
   .module('Crossnulls')
-  .controller('crossnullsCtrl', ['$scope', '$state', crossnullsCtrl]);
+  .controller('crossnullsCtrl', ['$scope', crossnullsCtrl]);
 
- function crossnullsCtrl($scope) {
-      if (turn == true) {
-        $scope.clickturn = function() {
-          $scope.turn = function() {
-          turn = false;
-          return "x";
-        };
-      };
-    }
-    else {
-      $scope.clickturn = function() {
-        $scope.turn = function() {
-          turn = true;
-          return "o";
-        };
-      };
-    };
-    });
+  function crossnullsCtrl($scope) {
+     $scope.cells = function() {
 
+     };
+  };
 })();

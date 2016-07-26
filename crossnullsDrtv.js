@@ -2,17 +2,15 @@
   'use strict';
   angular
   .module('Crossnulls')
-  .directive('crossnulls', crossnullsView);
+  .directive('crossnulls', crossnullsDrtv);
 
-  function projectShortView() {
+  function crossnullsDrtv() {
     return {
       scope: {
-        onClick: '=?',
-        project: '=?'
       },
       restrict: 'E',
-      controller: 'crossnulsCtrl',
-      templateUrl: 'ctossnuls.html'
+      controller: 'crossnullsCtrl',
+      templateUrl: 'crossnulls.html'
     };
   }
 })();

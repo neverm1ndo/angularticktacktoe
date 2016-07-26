@@ -2,8 +2,13 @@
 <html charset="utf-8">
 
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script src="crossnullsDrtv.js"></script>
+<script>
+  angular.module('Crossnulls', []);
+</script>
+<script src="myCellCtrl.js"></script>
+<script src="myCellDrtv.js"></script>
 <script src="crossnullsCtrl.js"></script>
+<script src="crossnullsDrtv.js"></script>
 <style>
 body {
   text-align: center;
@@ -45,10 +50,27 @@ body {
   cursor: pointer;
 }
 </style>
-<body ng-app="myApp">
-  <div class="field">
-  <crossnulls>    
-  </crossnulls>
+<body ng-app="Crossnulls">
+  <div class="field" ng-controller="controllerMain">
+    <my-cell ng-repeat="cell in field"></my-cell>
   </div>
 </body>
+<script>
+  'use strict';
+  angular.module('Crossnulls').controller('controllerMain', ['$scope', controllerMain]);
+  function controllerMain($scope) {
+    console.log('Main controller is working...');
+    $scope.field = [  //Cells Array
+      {cell: '1'},
+      {cell: '2'},
+      {cell: '3'},
+      {cell: '4'},
+      {cell: '5'},
+      {cell: '6'},
+      {cell: '7'},
+      {cell: '8'},
+      {cell: '9'}
+    ];
+  };
+</script>
 </html>
