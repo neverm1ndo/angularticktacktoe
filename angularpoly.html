@@ -2,6 +2,8 @@
 <html charset="utf-8">
 
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="crossnullsDrtv.js"></script>
+<script src="crossnullsCtrl.js"></script>
 <style>
 body {
   text-align: center;
@@ -44,30 +46,9 @@ body {
 }
 </style>
 <body ng-app="myApp">
-  <div class="field" ng-controller="crossnullController">
-    <div class="cell" ng-click="clickturn()">{{turn()}}</div>
+  <div class="field">
+  <crossnulls>    
+  </crossnulls>
   </div>
-<script>
-var app = angular.module('myApp', []);
-turn = true;
-app.controller('crossnullController', function($scope) {
-    if (turn == true) {
-      $scope.clickturn = function() {
-        $scope.turn = function() {
-        turn = false;
-        return "x";
-      };
-    };
-  }
-  else {
-    $scope.clickturn = function() {
-      $scope.turn = function() {
-        turn = true;
-        return "o";
-      };
-    };
-  };
-  });
-</script>
 </body>
 </html>
