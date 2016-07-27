@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html charset="utf-8">
-
+<head>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script>
   angular.module('Crossnulls', []);
@@ -41,7 +41,7 @@ body {
   background: #303030;
   float: left;
   border: 2px solid #202020;
-  color: #404040;
+  color: #707070;
   font-size: 36px;
   font-weight: 600;
 }
@@ -50,27 +50,21 @@ body {
   cursor: pointer;
 }
 </style>
+<title>Cross'n'Null</title>
+</head>
 <body ng-app="Crossnulls">
   <div class="field" ng-controller="controllerMain">
-    <my-cell ng-repeat="cell in field"></my-cell>
+    <div ng-controller="crossnullsCtrl">
+      <my-cell ng-repeat="(cell, y) in field"></my-cell>
+    </div>
   </div>
 </body>
 <script>
   'use strict';
   angular.module('Crossnulls').controller('controllerMain', ['$scope', controllerMain]);
+  var turn = 1;
   function controllerMain($scope) {
     console.log('Main controller is working...');
-    $scope.field = [  //Cells Array
-      {cell: '1'},
-      {cell: '2'},
-      {cell: '3'},
-      {cell: '4'},
-      {cell: '5'},
-      {cell: '6'},
-      {cell: '7'},
-      {cell: '8'},
-      {cell: '9'}
-    ];
   };
 </script>
 </html>
