@@ -5,37 +5,25 @@
   .controller('myCellCtrl', ['$scope', myCellCtrl]);
 
   function myCellCtrl($scope) {
-  /*  if (turn == true) {
-    $scope.clickQueue = function() {
-        $scope.state = "x";
-        turn = false;
-        console.log('turn=' + turn);
-      }
-    };
-    if (turn == false) {
-    $scope.clickQueue = function() {
-        $scope.state = "o";
-        turn = true;
-        console.log('turn=' + turn);
-      }
-    };*/
     var filled = false;
       $scope.clickQueue = function() {
-        if (turn === 0) {
+        switch (turn) {
+          case 0:
           if (filled == false) {
           $scope.state = "o";
           turn = 1;
           filled = true;
           console.log('Turn = ' + turn);
+    //      console.log('Turned on ' + $scope.cellnum[0]);
           console.log('Cell is filled = ' + filled);
-          }
         }
-      else {
+      case 1 :
         if (filled == false) {
           $scope.state = "x";
           turn = 0;
           filled = true;
           console.log('Turn = ' + turn);
+  //        console.log('Turned on ' + $scope.cellnum[0]);
           console.log('Cell is filled = ' + filled);
           }
         };
