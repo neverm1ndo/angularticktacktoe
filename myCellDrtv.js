@@ -1,4 +1,4 @@
-(function() {
+;(function() {
   'use strict';
   angular
   .module('Crossnulls')
@@ -7,9 +7,9 @@
   function myCellDrtv() {
     return {
       scope: {
-        state: '=?'
+        state: '=?',
+        cell: '='
       },
-      restrict: 'E',
       controller: 'myCellCtrl',
       templateUrl: 'myCellTmpl.html'
     };

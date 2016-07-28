@@ -1,4 +1,4 @@
-(function() {
+;(function() {
   'use strict';
   angular
   .module('Crossnulls')
@@ -12,20 +12,23 @@
           if (filled == false) {
           $scope.state = "o";
           turn = 1;
+          turnsLeft--;
           filled = true;
           console.log('Turn = ' + turn);
-    //      console.log('Turned on ' + $scope.cellnum[0]);
-          console.log('Cell is filled = ' + filled);
-    //      console.log($scope.field[1]);
+          console.log('Turns left = ' + turnsLeft);
+          console.log($scope.state + ' on ' + ($scope.$id - 12) + ' ' + $scope.object);
+      //    console.log('Cell is filled = ' + filled);
         }
       case 1 :
         if (filled == false) {
           $scope.state = "x";
           turn = 0;
+          turnsLeft--;
           filled = true;
           console.log('Turn = ' + turn);
-  //        console.log('Turned on ' + $scope.cellnum[0]);
-          console.log('Cell is filled = ' + filled);
+          console.log('Turns left = ' + turnsLeft);
+          console.log($scope.state + ' on ' + ($scope.$id - 12) + ' ' + $scope.cell['name']);
+    //      console.log('Cell is filled = ' + filled);
     //      console.log($scope.field[1]);
           }
         };

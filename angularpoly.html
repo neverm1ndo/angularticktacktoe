@@ -5,23 +5,24 @@
 <script>
   angular.module('Crossnulls', []);
 </script>
-<script src="myCellCtrl.js"></script>
-<script src="myCellDrtv.js"></script>
 <script src="crossnullsCtrl.js"></script>
 <script src="crossnullsDrtv.js"></script>
+<script src="myCellCtrl.js"></script>
+<script src="myCellDrtv.js"></script>
 <style>
 body {
   text-align: center;
   font-family: 'Arial', sans-serif;
   padding: 30px;
-  height: 500px;
+  height: 450px;
   border: 1px dashed #303030;
   position: absolute;
-  margin: -250px 30px;
+  margin: -225px 30px;
   top: 50%;
   left: 0px;
   right: 0px;
   min-width: 300px;
+  background: #eeeeee;
 }
 .field {
   position: absolute;
@@ -44,6 +45,7 @@ body {
   color: #707070;
   font-size: 36px;
   font-weight: 600;
+  transition: 0.08s linear;
 }
 .cell:hover {
   background: #202020;
@@ -55,7 +57,7 @@ body {
 <body ng-app="Crossnulls">
   <div class="field" ng-controller="controllerMain">
     <div ng-controller="crossnullsCtrl">
-      <my-cell ng-repeat="cell in field"></my-cell>
+      <my-cell ng-repeat="cell in field track by $id(cell)"></my-cell>
     </div>
   </div>
 </body>
@@ -63,9 +65,12 @@ body {
   'use strict';
   angular.module('Crossnulls').controller('controllerMain', ['$scope', controllerMain]);
   var turn = 1;
+  var turnsLeft = 0;
   function controllerMain($scope) {
     console.log('Main controller is working...');
-      $scope.field = ["top-left","top-center","top-right","mid-left","mid-center","mid-right","bot-left","bot-center","bot-right"];
+    // Add the array with cells
+    $scope.field = [{name : "top-left"},"top-center","top-right","mid-left","mid-center","mid-right","bot-left","bot-center","bot-right"];
+    turnsLeft = $scope.field.length;
   };
 </script>
 </html>
