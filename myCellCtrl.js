@@ -6,6 +6,7 @@
 
   function myCellCtrl($scope) {
     var filled = false;
+    var track;
       $scope.clickQueue = function() {
         switch (turn) {
           case 0:
@@ -16,8 +17,7 @@
           filled = true;
           console.log('Turn = ' + turn);
           console.log('Turns left = ' + turnsLeft);
-          console.log($scope.state + ' on ' + ($scope.$id - 12) + ' ' + $scope.object);
-      //    console.log('Cell is filled = ' + filled);
+          console.log($scope.state + ' on ' + ($scope.$id - 13));
         }
       case 1 :
         if (filled == false) {
@@ -27,7 +27,7 @@
           filled = true;
           console.log('Turn = ' + turn);
           console.log('Turns left = ' + turnsLeft);
-          console.log($scope.state + ' on ' + ($scope.$id - 12) + ' ' + $scope.cell['name']);
+          console.log($scope.state + ' on ' + ($scope.$id - 13));
     //      console.log('Cell is filled = ' + filled);
     //      console.log($scope.field[1]);
           }
