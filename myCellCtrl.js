@@ -17,7 +17,7 @@
           filled = true;
           console.log('Turn = ' + turn);
           console.log('Turns left = ' + turnsLeft);
-          console.log($scope.state + ' on ' + ($scope.$id - 13));
+          console.log($scope.state + ' on ' + ($scope.cell));
         }
       case 1 :
         if (filled == false) {
@@ -27,9 +27,8 @@
           filled = true;
           console.log('Turn = ' + turn);
           console.log('Turns left = ' + turnsLeft);
-          console.log($scope.state + ' on ' + ($scope.$id - 13));
+          console.log($scope.state + ' on ' + ($scope.cell));
     //      console.log('Cell is filled = ' + filled);
-    //      console.log($scope.field[1]);
           }
         };
       };

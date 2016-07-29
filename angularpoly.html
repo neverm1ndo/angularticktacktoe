@@ -51,12 +51,27 @@ body {
   background: #202020;
   cursor: pointer;
 }
+.cell:hover span{
+  opacity: 0.5;
+}
+.cell:hover p{
+  opacity: 0.5;
+}
+p, span {
+  transition: 0.08s linear;
+}
 p {
   position: absolute;
   top: 2px;
   left: 12px;
   font-size: 9px;
-  color: #454545;
+  color: orange;
+  opacity: 0;
+}
+span {
+  font-size: 9px;
+  color: orange;
+  opacity: 0;
 }
 </style>
 <title>Cross'n'Null</title>
@@ -64,7 +79,12 @@ p {
 <body ng-app="Crossnulls">
   <div class="field" ng-controller="controllerMain">
     <div ng-controller="crossnullsCtrl">
-      <my-cell ng-repeat="cell in field track by $id(cell)"></my-cell>
+      <div class="cell" ng-controller="myCellCtrl" ng-click="clickQueue()" ng-repeat="cell in field track by $index">
+        {{state}}
+        <p>
+          {{$index + 1}} <span>{{cell}}</span>
+        </p>
+      </div>
     </div>
   </div>
 </body>
@@ -76,7 +96,7 @@ p {
   function controllerMain($scope) {
     console.log('Main controller is working...');
     // Add the array with cells
-    $scope.field = [{name : "top-left"},"top-center","top-right","mid-left","mid-center","mid-right","bot-left","bot-center","bot-right"];
+    $scope.field = ["top-left","top-center","top-right","mid-left","mid-center","mid-right","bot-left","bot-center","bot-right"];
     turnsLeft = $scope.field.length;
   };
 </script>
