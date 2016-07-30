@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html charset="utf-8">
+<html>
+<meta charset="utf-8"/>
 <head>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script>
@@ -21,7 +22,7 @@
           {{$index + 1}}<span>{{cell}}</span>
         </p>
       </div>
-      <!--button ng-click="restart()">Restart</button-->
+      <button ng-click="restart()">Restart</button>
     </div>
     <div ng-style="winLine" ng-show="winShow" class="winline" id="winLine"></div>
   </div>
@@ -48,7 +49,7 @@
           $scope.winLine = winLine;
         }
       };
-      /*$scope.restart = function() {
+      $scope.restart = function() {
         console.log('Restarting...');
         $scope.winShow = false;
         turn = 1;
@@ -57,7 +58,7 @@
         win = false;
         $scope.field = $scope.$new(true);
         $scope.field = backState;
-      }*/
+      }
   };
 </script>
 </html>
