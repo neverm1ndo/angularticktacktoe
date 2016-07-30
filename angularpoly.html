@@ -49,13 +49,14 @@
         }
       };
       $scope.restart = function() {
-      /*console.log('Restarting...');
+        console.log('Restarting...');
         $scope.winShow = false;
         turn = 1;
         turnsLeft = $scope.field.length;
         states = ["1","2","3","4","5","6","7","8","9"];
         win = false;
-        $scope.myCell = $scope.$new(true);*/
+        $scope.field = $scope.$new(true);
+        $scope.field = backState;
       }
   };
 </script>
