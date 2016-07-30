@@ -1,4 +1,4 @@
-;(function() {
+(function() {
   'use strict';
   angular
   .module('Crossnulls')
@@ -87,6 +87,12 @@
         }
         };
         checkWin();
+      };
+      if (clean == true) {
+        $scope.clean = function() {
+            $scope.$parent.state = " ";
+            filled = false;
+        };
       };
     };
 })();
