@@ -1,0 +1,97 @@
+body {
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  padding: 30px;
+  height: 450px;
+  border: 1px dashed #303030;
+  position: absolute;
+  margin: -225px 30px;
+  top: 50%;
+  left: 0px;
+  right: 0px;
+  min-width: 300px;
+  background: #eeeeee;
+}
+.field {
+  position: absolute;
+  margin: -156px auto;
+  top: 50%;
+  left: 0px;
+  right: 0px;
+  width: 312px;
+  height: 312px;
+  background: #404040;
+}
+.cell {
+  padding-top: 27px;
+  position: relative;
+  width: 100px;
+  height: 73px;
+  background: #303030;
+  float: left;
+  border: 2px solid #202020;
+  color: #707070;
+  font-size: 36px;
+  font-weight: 600;
+  transition: 0.08s linear;
+}
+.cell:hover {
+  background: #202020;
+  cursor: pointer;
+}
+.cell:hover span{
+  opacity: 0.5;
+}
+.cell:hover p{
+  opacity: 0.5;
+}
+p, span {
+  transition: 0.08s linear;
+}
+p {
+  position: absolute;
+  top: 2px;
+  left: 12px;
+  font-size: 9px;
+  color: orange;
+  opacity: 0;
+}
+span {
+  font-size: 9px;
+  color: orange;
+  opacity: 0;
+}
+.winline {
+  background: orange;
+  width: 470px;
+  position: absolute;
+  height: 3px;
+  left: -79px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 100;
+  transition: 1s linear;
+}
+.winLine {
+  opacity: 0;
+}
+.winLine.ng-show {
+  opacity: 1;
+}
+button {
+  position: absolute;
+  bottom: -60px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 9px;
+  cursor: pointer;
+}
+button:focus {
+  outline: unset;
+}

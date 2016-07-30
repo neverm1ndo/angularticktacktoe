@@ -2,6 +2,7 @@
 <html charset="utf-8">
 <head>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script>
   angular.module('Crossnulls', []);
 </script>
@@ -9,83 +10,21 @@
 <script src="crossnullsDrtv.js"></script>
 <script src="myCellCtrl.js"></script>
 <script src="myCellDrtv.js"></script>
-<style>
-body {
-  text-align: center;
-  font-family: 'Arial', sans-serif;
-  padding: 30px;
-  height: 450px;
-  border: 1px dashed #303030;
-  position: absolute;
-  margin: -225px 30px;
-  top: 50%;
-  left: 0px;
-  right: 0px;
-  min-width: 300px;
-  background: #eeeeee;
-}
-.field {
-  position: absolute;
-  margin: -156px auto;
-  top: 50%;
-  left: 0px;
-  right: 0px;
-  width: 312px;
-  height: 312px;
-  background: #404040;
-}
-.cell {
-  padding-top: 27px;
-  position: relative;
-  width: 100px;
-  height: 73px;
-  background: #303030;
-  float: left;
-  border: 2px solid #202020;
-  color: #707070;
-  font-size: 36px;
-  font-weight: 600;
-  transition: 0.08s linear;
-}
-.cell:hover {
-  background: #202020;
-  cursor: pointer;
-}
-.cell:hover span{
-  opacity: 0.5;
-}
-.cell:hover p{
-  opacity: 0.5;
-}
-p, span {
-  transition: 0.08s linear;
-}
-p {
-  position: absolute;
-  top: 2px;
-  left: 12px;
-  font-size: 9px;
-  color: orange;
-  opacity: 0;
-}
-span {
-  font-size: 9px;
-  color: orange;
-  opacity: 0;
-}
-</style>
+<link href="style.css" rel="stylesheet"/>
 <title>Cross'n'Null</title>
 </head>
 <body ng-app="Crossnulls">
-  <div class="field" ng-controller="controllerMain">
+  <div class="field" ng-controller="controllerMain" ng-click="clkwinLine()">
     <div ng-controller="crossnullsCtrl">
       <div class="cell" ng-controller="myCellCtrl" ng-click="clickQueue()" ng-repeat="cell in field track by $index">
         {{state}}
         <p>
-          {{$index + 1}} <span>{{cell}}</span>
+          {{$index + 1}}<span>{{cell}}</span>
         </p>
       </div>
+      <button ng-click="restart()">Restart</button>
     </div>
+    <div ng-style="winLine" ng-show="winShow" class="winline" id="winLine"></div>
   </div>
 </body>
 <script>
@@ -93,11 +32,33 @@ span {
   angular.module('Crossnulls').controller('controllerMain', ['$scope', controllerMain]);
   var turn = 1;
   var turnsLeft = 0;
+  var states = ["1","2","3","4","5","6","7","8","9"];
+  var win = false;
+  var winLine;
+  var backState;
   function controllerMain($scope) {
+    $scope.winShow = false;
     console.log('Main controller is working...');
     // Add the array with cells
     $scope.field = ["top-left","top-center","top-right","mid-left","mid-center","mid-right","bot-left","bot-center","bot-right"];
     turnsLeft = $scope.field.length;
+    backState = $scope.field;
+      $scope.clkwinLine = function() {
+        if (win == true) {
+          $scope.winShow = true;
+          $scope.winLine = winLine;
+        }
+      };
+      $scope.restart = function() {
+        console.log('Restarting...');
+        $scope.winShow = false;
+        turn = 1;
+        turnsLeft = $scope.field.length;
+        states = ["1","2","3","4","5","6","7","8","9"];
+        win = false;
+        $scope.field = $scope.$new(true);
+        $scope.field = backState;
+      }
   };
 </script>
 </html>
