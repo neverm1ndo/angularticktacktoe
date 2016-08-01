@@ -16,7 +16,12 @@
 <body ng-app="Crossnulls">
   <div class="field" ng-controller="controllerMain" ng-click="clkwinLine()">
     <div ng-controller="crossnullsCtrl">
-      <div class="cell" ng-controller="myCellCtrl" ng-click="clickQueue()" ng-repeat="cell in field track by $index">
+      <div class="cell"
+          ng-model="state"
+          ng-controller="myCellCtrl as cellctrl"
+          ng-click="clickQueue()"
+          ng-repeat="cell in field track by $index"
+          >
         {{state}}
         <p>
           {{$index + 1}}<span>{{cell}}</span>
@@ -35,14 +40,14 @@
   var states = ["1","2","3","4","5","6","7","8","9"];
   var win = false;
   var winLine;
-  var backState;
+  var clean;
   function controllerMain($scope) {
     $scope.winShow = false;
+    $scope.out = {};
     console.log('Main controller is working...');
     // Add the array with cells
     $scope.field = ["top-left","top-center","top-right","mid-left","mid-center","mid-right","bot-left","bot-center","bot-right"];
     turnsLeft = $scope.field.length;
-    backState = $scope.field;
       $scope.clkwinLine = function() {
         if (win == true) {
           $scope.winShow = true;
@@ -51,7 +56,9 @@
       };
       $scope.restart = function() {
         console.log('Restarting...');
+        console.log( $scope.out.state + "- Need to clean");
         $scope.winShow = false;
+        clean = true;
         turn = 1;
         turnsLeft = $scope.field.length;
         states = ["1","2","3","4","5","6","7","8","9"];
@@ -59,6 +66,7 @@
         $scope.field = $scope.$new(true);
         $scope.field = backState;
       }
+      };
   };
 </script>
 </html>
